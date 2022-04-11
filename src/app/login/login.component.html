@@ -1,0 +1,53 @@
+<h1>Login To System</h1>
+
+<p class="text-muted"> <small>Small hint : abc@gmail.com a12345</small></p>
+
+<div class="row">
+    <div class="col-12">
+        <form #loginForm="ngForm" (ngSubmit)="onLogin(loginForm.value)">
+
+            <ngb-alert *ngIf="!isAuthentical && loginForm.submitted" [dismissible]="false" type="danger">
+                <strong>Credentials!</strong> Email and password does not match our records.
+              </ngb-alert>
+
+
+            <div class="mb-3">
+                <label for="email" class="form-label">Email adress</label>
+                <input type="email" 
+                    class="form-control"
+                    aria-describedby="emailHelp"
+                    ngModel
+                    #email="ngModel"
+                    id="email"
+                    name="email"
+                    placeholder="your@email.com"
+                    email
+                    required>
+
+                <div class="text-danger" *ngIf="email.touched && email.invalid">
+                    Please fill a valid email.
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password"
+                       ngModel
+                       class="form-control"
+                       #password="ngModel"
+                       id="password"
+                       name="password"
+                       required
+                       placeholder="your password..."
+                       minlength="6"              
+                       >
+                
+                <div class="text-danger" *ngIf="password.touched && password.invalid">
+                    Please fill atlist 6 characters.
+                </div>
+                <br>
+                <button class="btn btn-primary">Login</button>
+            </div>
+        </form>
+    </div>
+</div>

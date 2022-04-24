@@ -1,5 +1,5 @@
-<div class="row">
-    <div class="col-12">
+<div class="row"  *ngIf="_userService.isAuthenticated()" >
+    <div class="col-11">
         <a *ngFor="let link of items"
             class="btn btn-info m-1"
             routerLink="/{{link.link}}"
@@ -8,5 +8,8 @@
                     {{link.title}}
 
         </a>
+    </div>
+    <div class="col-1 align-self-end">
+        <button class="btn btn-danger" (click)="logout()">Log Out</button>
     </div>
 </div>

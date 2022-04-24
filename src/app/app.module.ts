@@ -14,15 +14,16 @@ import { AddCpurseComponent } from './components/add-cpurse/add-cpurse.component
 import { DeleteCourseComponent } from './components/delete-course/delete-course.component';
 import { EditCourseComponent } from './components/edit-course/edit-course.component';
 import{HttpClientModule} from '@angular/common/http'
+import { AuthGuardService } from './services/auth-guard.service';
 
 const webRoutes:Routes = [
   {path:'' , component : LoginComponent},
   {path:'login' , component : LoginComponent},
-  {path:'dashboard' , component : DashboardComponent},
-  {path:'courses' , component : CoursesComponent},
-  {path:'courses/add-course' , component : AddCpurseComponent},
-  {path:'courses/delete/:id' , component : DeleteCourseComponent},
-  {path:'courses/edit/:id' , component : EditCourseComponent},
+  {path:'dashboard' , component : DashboardComponent , canActivate : [AuthGuardService]},
+  {path:'courses' , component : CoursesComponent , canActivate : [AuthGuardService]},
+  {path:'courses/add-course' , component : AddCpurseComponent , canActivate : [AuthGuardService]} ,
+  {path:'courses/delete/:id' , component : DeleteCourseComponent , canActivate : [AuthGuardService]},
+  {path:'courses/edit/:id' , component : EditCourseComponent , canActivate : [AuthGuardService]},
 ];
 
 @NgModule({

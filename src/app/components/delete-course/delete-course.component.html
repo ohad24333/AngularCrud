@@ -1,1 +1,11 @@
-<p>delete-course works!</p>
+<div class="row">
+    <div class="col-8 offset-2">
+        <h2>Are You Sure you want to delete course N.{{id}}?</h2>
+        <div (click)="onDelete()" class="col-3 offset-2 mt-5">
+            <button class="btn btn-danger float-start">Yes</button>
+        </div>
+        <div class="col-3 offset-2 mt-5">
+            <button routerLink="/courses" class="btn btn-secondary float-end">No</button>
+        </div>
+    </div>
+</div>

@@ -10,6 +10,7 @@ export class CoursesService {
 
   courses:Course[]=[];
 
+  private server:string = 'http://localhost:3000';
 
   constructor(private http:HttpClient) { 
    
@@ -17,7 +18,21 @@ export class CoursesService {
   }
 
   getCourses() {
-    return this.http.get('http://localhost:3000/courses');
+    return this.http.get(`${this.server}/courses`);
   }
 
+  getSingleCourse(id:number){
+    return this.http.get(`${this.server}/courses/${id}`)
+  }
+  postCourse(course:Course){
+    return this.http.post(`${this.server}/courses`,course)
+  }
+
+  deleteCourse(id:number){
+    return this.http.delete(`${this.server}/courses/${id}`);
+  }
+
+  updateCourse(id:number,course:Course){
+    return this.http.put(`${this.server}/courses/${id}`,course)
+  }
 }
